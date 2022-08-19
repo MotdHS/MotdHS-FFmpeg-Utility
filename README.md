@@ -28,3 +28,5 @@ A tool written in Python to make using FFmpeg easier.
 I tried to compile it into .exe with pyinstaller, but I couldn't get it to work for some reason.
 
 I'll figure it out somehow soon, but for now, you need to do the steps above.
+
+Another thing to note: This program is only tested on Windows. It may not work correctly on Linux/Mac OS.
