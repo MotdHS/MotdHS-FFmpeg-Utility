@@ -56,10 +56,11 @@ if choiceInt == 1:
         outputFile = input("Output file: ")
         if not outputFile.endswith(".mp4"):
             print(color.Fore.RED + "Please enter a .mp4 file.", end=end)
+    print("Please choose a codec to use:")
     print(color.Fore.YELLOW+"\nMake sure you entered these correctly!", end=end)
     confirmConvert = input("Start conversion? (Y/n): ")
     if confirmConvert.lower() == "n": sys.exit()
     print("Starting conversion...")
-    os.system(f"ffmpeg -i \"{inputFile}\" -s {newRes[0]}x{newRes[1]} -b:v {newBitrate}k -bufsize {newBitrate}k -r {newFPS} \"{outputFile}\"")
+    os.system(f"ffmpeg -i \"{inputFile}\" -c:v {codec} -s {newRes[0]}x{newRes[1]} -b:v {newBitrate}k -bufsize {newBitrate}k -r {newFPS} \"{outputFile}\"")
     print(color.Fore.GREEN+"Conversion complete!", end=end)
     input("Press enter to exit.")
