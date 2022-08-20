@@ -12,11 +12,18 @@ inputFile = input("Input file: ")
 speed = input("Video Speed: ")
 newFPS = input("New FPS: ")
 confirmConvert = input("Remove Audio? (y/N): ")
-if confirmConvert.lower() == "y": rmAudio = True
-audioInfo = get_audio_properties(inputFile)
-sampleRate = audioInfo['sample_rate']
-sampleConfirm = input("Detected Sample Rate: " + sampleRate + "\nIs this correct? (Y/n): ")
-if sampleConfirm.lower() == "n": sampleRate = input("Audio Sample Rate: ")
+detectError = False
+sampleRate = 0
+sampleConfirm = ""
+try:
+    if confirmConvert.lower() == "y": rmAudio = True
+    audioInfo = get_audio_properties(inputFile)
+    sampleRate = audioInfo['sample_rate']
+    sampleConfirm = input("Detected Sample Rate: " + sampleRate + "\nIs this correct? (Y/n): ")
+except:
+    print("An error occurred while trying to detect Sample rate.")
+    detectError = True
+if sampleConfirm.lower() == "n" or detectError: sampleRate = input("Audio Sample Rate: ")
 outputFile = input("Output file: ")
 print("Please choose a codec to use:")
 print("lib[x]264 - CPU Encoding")
