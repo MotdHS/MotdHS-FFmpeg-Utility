@@ -26,11 +26,12 @@ except:
     detectError = True
 if sampleConfirm.lower() == "n" or detectError: sampleRate = input("Audio Sample Rate: ")
 outputFile = input("Output file: ")
-print("Please choose a codec to use:")
-print("lib[x]264 - CPU Encoding")
-print("h264_[n]venc - NVIDIA GPU Encoding")
-print("h264_[a]mf - AMD GPU Encoding")
-print("[O]ther", end="\n\n")
+
+print(f"\n{color.Fore.CYAN}Please choose a codec to use:", end=end)
+print(f"lib{color.Fore.GREEN}x{color.Fore.RESET}264 - CPU Encoding")
+print(f"h264_{color.Fore.GREEN}n{color.Fore.RESET}venc - NVIDIA GPU Encoding")
+print(f"h264_{color.Fore.GREEN}a{color.Fore.RESET}mf - AMD GPU Encoding")
+print(f"{color.Fore.GREEN}O{color.Fore.RESET}ther", end="\n\n")
 
 codecChoice = ""
 correctCodec = False

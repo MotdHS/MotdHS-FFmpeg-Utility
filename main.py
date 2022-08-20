@@ -30,22 +30,23 @@ if not fileFound:
         print(f"{color.Fore.YELLOW}FFmpeg not found in current directory", end=end)
         print("Please download it from https://ffmpeg.org")
 if not fileFound: input("Press enter to exit.");sys.exit()
-print(color.Style.BRIGHT + color.Fore.BLUE + "\nMotdHS's FFmpeg Utility v" + version, end=end)
+print(color.Style.BRIGHT + color.Fore.CYAN + "\nMotdHS's FFmpeg Utility v" + version, end=end)
 print(color.Fore.RED + "This is not a finished program. If you encounter any bugs, please create an issue on GitHub.", end=end)
 print("(1) Change the quality of the video")
-print(f"(2) {color.Fore.YELLOW}[SOON]{color.Fore.RESET} Convert .avi to .mp4 and change the quality of the video")
-print(f"(3) Change the speed of the video", end="\n\n")
+print(f"(2) Change the speed of the video")
+print(f"(3) {color.Fore.YELLOW}[SOON]{color.Fore.RESET} Change the quality of an audio file, or the audio of a video file")
+print()
 validChoice = False
 while not validChoice:
     choice = input("> ")
-    if choice == "1" or choice == "3":
+    if choice == "1" or choice == "2":
         validChoice = True
-    elif choice == "2":
+    elif choice == "3":
         print(color.Fore.YELLOW+"Coming in future versions.", end=end)
 choiceInt = int(choice)
 if choiceInt == 1:
     import modes.qual
-elif choiceInt == 3:
+elif choiceInt == 2:
     import modes.speed
 com = ""
 try:

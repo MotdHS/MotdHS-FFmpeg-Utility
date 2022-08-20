@@ -6,12 +6,13 @@ path = os.getenv('PATH').split(';')
 end = color.Style.RESET_ALL + "\n"
 
 
-print(color.Fore.YELLOW+"Note: You can only use .mp4 as of now.", end=end)
-inputFile = ""
-while not inputFile.endswith(".mp4"):
-    inputFile = input("Input file: ")
-    if not inputFile.endswith(".mp4"):
-        print(color.Fore.RED + "Please enter a .mp4 file.", end=end)
+print(color.Fore.YELLOW+"Note: It may not work with some file types.", end=end)
+inputFile = input("Input file: ")
+# inputFile = ""
+# while not inputFile.endswith(".mp4"):
+#     inputFile = input("Input file: ")
+#     if not inputFile.endswith(".mp4"):
+#         print(color.Fore.RED + "Please enter a .mp4 file.", end=end)
 newBitrate = input("New Bitrate (in kbps): ")
 newFPS = input("New FPS: ")
 newRes = input("New Resolution (ex. 1920x1080): ").split("x")
@@ -20,11 +21,12 @@ while not outputFile.endswith(".mp4"):
     outputFile = input("Output file: ")
     if not outputFile.endswith(".mp4"):
         print(color.Fore.RED + "Please enter a .mp4 file.", end=end)
-print("Please choose a codec to use:")
-print("lib[x]264 - CPU Encoding")
-print("h264_[n]venc - NVIDIA GPU Encoding")
-print("h264_[a]mf - AMD GPU Encoding")
-print("[O]ther", end="\n\n")
+        
+print(f"\n{color.Fore.CYAN}Please choose a codec to use:", end=end)
+print(f"lib{color.Fore.GREEN}x{color.Fore.RESET}264 - CPU Encoding")
+print(f"h264_{color.Fore.GREEN}n{color.Fore.RESET}venc - NVIDIA GPU Encoding")
+print(f"h264_{color.Fore.GREEN}a{color.Fore.RESET}mf - AMD GPU Encoding")
+print(f"{color.Fore.GREEN}O{color.Fore.RESET}ther", end="\n\n")
 
 codecChoice = ""
 correctCodec = False
