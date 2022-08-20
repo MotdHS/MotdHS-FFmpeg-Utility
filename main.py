@@ -1,4 +1,4 @@
-version = "0.0.1.2"
+version = "0.0.1.3"
 import os
 import sys
 import colorama as color
@@ -10,24 +10,25 @@ os.system('cls')
 for curPath in path:
     try:
         with open(f"{curPath}\\ffmpeg.exe", "r") as file:
-            fileFound = True
-            print(f"{color.Fore.GREEN}FFmpeg detected in PATH", end=end)
+            if len(curPath) != 0:
+                fileFound = True
+                print(f"{color.Fore.GREEN}FFmpeg detected in PATH", end=end)
     except FileNotFoundError:
         print(end="")
     try:
         with open(f"{curPath}ffmpeg.exe", "r") as file:
-            fileFound = True
-            print(f"{color.Fore.GREEN}FFmpeg detected in PATH", end=end)
+            if len(curPath) != 0:
+                fileFound = True
+                print(f"{color.Fore.GREEN}FFmpeg detected in PATH", end=end)
     except FileNotFoundError:
         print(end="")
 if not fileFound:
-    print(f"{color.Fore.YELLOW}FFmpeg not found in PATH", end=end)
     try:
         with open(os.getcwd() + "\\ffmpeg.exe", "r") as file:
             fileFound = True
             print(f"{color.Fore.GREEN}FFmpeg detected in current directory", end=end)
     except FileNotFoundError:
-        print(f"{color.Fore.YELLOW}FFmpeg not found in current directory", end=end)
+        print(f"{color.Fore.RED}FFmpeg not found", end=end)
         print("Please download it from https://ffmpeg.org")
 if not fileFound: input("Press enter to exit.");sys.exit()
 print(color.Style.BRIGHT + color.Fore.CYAN + "\nMotdHS's FFmpeg Utility v" + version, end=end)
