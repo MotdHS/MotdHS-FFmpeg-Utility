@@ -29,7 +29,7 @@ if not fileFound:
         print(f"{color.Fore.YELLOW}FFmpeg not found in current directory", end=end)
         print("Please download it from https://ffmpeg.org")
 if not fileFound: input("Press enter to exit.");sys.exit()
-print(color.Style.BRIGHT + color.Fore.BLUE + "\nMotdHS's FFmpeg Utility v0.1 ", end=end)
+print(color.Style.BRIGHT + color.Fore.BLUE + "\nMotdHS's FFmpeg Utility v0.0.1 ", end=end)
 print(color.Fore.RED + "This is not a finished program. If you encounter any bugs, please create an issue on GitHub.", end=end)
 print("(1) Change the quality of the video")
 print(f"(2) {color.Fore.YELLOW}[SOON]{color.Fore.RESET} Convert .avi to .mp4 and change the quality of the video")
