@@ -1,7 +1,6 @@
 import os
 import sys
 import colorama as color
-from videoprops import get_audio_properties
 color.init()
 path = os.getenv('PATH').split(';')
 end = color.Style.RESET_ALL + "\n"
@@ -12,13 +11,15 @@ inputFile = input("Input file: ")
 speed = input("Video Speed: ")
 newFPS = input("New FPS: ")
 confirmConvert = input("Remove Audio? (y/N): ")
+if confirmConvert.lower() == "y": rmAudio = True
 detectError = False
 sampleRate = 0
 sampleConfirm = ""
 try:
-    if confirmConvert.lower() == "y": rmAudio = True
-    audioInfo = get_audio_properties(inputFile)
-    sampleRate = audioInfo['sample_rate']
+    os.system(f"ffmpeg -i \"{inputFile}\" 2> temp.txt")
+    with open("temp.txt", "r") as audioInfo:
+        sampleRate = audioInfo.read().split(" Hz, ")[0].split(" ")[-1]
+    os.remove("temp.txt")
     sampleConfirm = input("Detected Sample Rate: " + sampleRate + "\nIs this correct? (Y/n): ")
 except:
     print("An error occurred while trying to detect Sample rate.")
