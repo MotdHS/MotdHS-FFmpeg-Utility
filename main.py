@@ -1,4 +1,4 @@
-version = "0.0.1.2"
+version = "0.0.1.3"
 import os
 import sys
 import colorama as color
